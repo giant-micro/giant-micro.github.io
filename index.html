@@ -1,1001 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giant Micro — Making Little Things Act Big</title>
-    <meta name="description" content="AI agent consulting and deployment for small businesses. We build, deploy, and maintain AI agents that handle real business operations.">
-    <link rel="icon" type="image/png" href="logo.png">
-    <style>
-        /* ========== RESET & BASE ========== */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
-            color: #000029;
-            background: #FFFFFF;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* ========== DIAGONAL STRIPE PATTERNS ========== */
-        .stripe-bg-green {
-            background: repeating-linear-gradient(
-                -45deg,
-                #00cd91,
-                #00cd91 10px,
-                #00b880 10px,
-                #00b880 20px
-            );
-        }
-
-        .stripe-bg-dark {
-            background: repeating-linear-gradient(
-                -45deg,
-                #000029,
-                #000029 10px,
-                #000835 10px,
-                #000835 20px
-            );
-        }
-
-        .stripe-bg-light {
-            background: repeating-linear-gradient(
-                -45deg,
-                #f0f0f0,
-                #f0f0f0 10px,
-                #e8e8e8 10px,
-                #e8e8e8 20px
-            );
-        }
-
-        /* ========== TYPOGRAPHY ========== */
-        h1, h2, h3, h4 {
-            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            letter-spacing: 5px;
-        }
-
-        h2 {
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            margin-bottom: 1rem;
-        }
-
-        h3 {
-            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
-            letter-spacing: 2px;
-        }
-
-        p {
-            font-family: Arial, Helvetica, sans-serif;
-            font-weight: 400;
-        }
-
-        /* ========== CONTAINER ========== */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* ========== NAVIGATION ========== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: #FFFFFF;
-            border-bottom: 6px solid #000029;
-            border-top: 4px solid #00cd91;
-            padding: 0 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 41, 0.1);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 80px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-logo img {
-            height: 50px;
-            width: auto;
-        }
-
-        .nav-logo span {
-            color: #000029;
-            font-size: 1.3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: #000029;
-            font-size: 0.85rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: color 0.2s;
-            padding: 0.5rem 0;
-        }
-
-        .nav-links a:hover {
-            color: #00cd91;
-        }
-
-        /* Hamburger */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 6px;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 30px;
-            height: 4px;
-            background: #000029;
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        /* ========== BUTTONS ========== */
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
-            font-size: 1rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 6px solid #000029;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary {
-            background: #00cd91;
-            color: #000029;
-            box-shadow: 6px 6px 0 #000029;
-        }
-
-        .btn-primary:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 9px 9px 0 #000029;
-        }
-
-        .btn-primary:active {
-            transform: translate(0, 0);
-            box-shadow: 3px 3px 0 #000029;
-        }
-
-        .btn-white {
-            background: #FFFFFF;
-            color: #000029;
-            box-shadow: 6px 6px 0 #00cd91;
-            border-color: #000029;
-        }
-
-        .btn-white:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 9px 9px 0 #00cd91;
-        }
-
-        /* ========== HERO ========== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 2rem 4rem;
-            background: #e8f5f0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 40px,
-                rgba(0, 205, 145, 0.06) 40px,
-                rgba(0, 205, 145, 0.06) 80px
-            );
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-        }
-
-        .hero-logo {
-            width: min(500px, 80vw);
-            margin-bottom: 2rem;
-        }
-
-        .hero h1 {
-            color: #000029;
-            margin-bottom: 1.5rem;
-            text-shadow: 4px 4px 0 rgba(0, 205, 145, 0.2);
-        }
-
-        .hero p {
-            color: #333333;
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        /* ========== SECTION COMMON ========== */
-        section {
-            padding: 6rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-header h2 {
-            display: inline-block;
-            background: #000029;
-            color: #FFFFFF;
-            padding: 0.8rem 2rem;
-            border: 6px solid #000029;
-            box-shadow: 8px 8px 0 #00cd91;
-        }
-
-        .section-header p {
-            margin-top: 1.5rem;
-            font-size: 1.1rem;
-            color: #333;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ========== SERVICES / CARDS ========== */
-        #services {
-            background: #f0f0f0;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .card {
-            background: #FFFFFF;
-            border: 6px solid #000029;
-            box-shadow: 8px 8px 0 #000029;
-            padding: 2.5rem 2rem;
-            transition: all 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 13px 13px 0 #000029;
-        }
-
-        .card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            margin-bottom: 1rem;
-            color: #000029;
-        }
-
-        .card p {
-            color: #333;
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        .card:nth-child(1) {
-            border-top: 12px solid #00cd91;
-        }
-
-        .card:nth-child(2) {
-            border-top: 12px solid #000029;
-        }
-
-        .card:nth-child(3) {
-            border-top: 12px solid #00cd91;
-        }
-
-        /* ========== HOW IT WORKS ========== */
-        #how-it-works {
-            background: #FFFFFF;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            counter-reset: step;
-        }
-
-        .step {
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 80px;
-            height: 80px;
-            background: #00cd91;
-            color: #000029;
-            font-size: 2.5rem;
-            font-weight: 900;
-            border: 6px solid #000029;
-            box-shadow: 6px 6px 0 #000029;
-            margin-bottom: 1.5rem;
-        }
-
-        .step h3 {
-            margin-bottom: 0.8rem;
-            color: #000029;
-        }
-
-        .step p {
-            color: #555;
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-
-        /* ========== PROOF POINT ========== */
-        #proof {
-            background: #000029;
-            color: #FFFFFF;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #proof::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 20px,
-                rgba(0, 205, 145, 0.05) 20px,
-                rgba(0, 205, 145, 0.05) 40px
-            );
-        }
-
-        .proof-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .proof-content h2 {
-            color: #00cd91;
-            margin-bottom: 2rem;
-            box-shadow: none;
-            background: none;
-            padding: 0;
-            border: none;
-            display: block;
-        }
-
-        .proof-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 6px solid #00cd91;
-            box-shadow: 8px 8px 0 #00cd91;
-            padding: 3rem 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .proof-card p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #ccc;
-        }
-
-        .proof-tagline {
-            font-size: 1.3rem;
-            color: #00cd91;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        /* ========== ABOUT ========== */
-        #about {
-            background: #f0f0f0;
-            position: relative;
-        }
-
-        #about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 30px,
-                rgba(0, 0, 41, 0.02) 30px,
-                rgba(0, 0, 41, 0.02) 60px
-            );
-        }
-
-        .about-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-box {
-            background: #FFFFFF;
-            border: 6px solid #000029;
-            box-shadow: 10px 10px 0 #000029;
-            padding: 3rem;
-        }
-
-        .about-box h3 {
-            color: #000029;
-            margin-bottom: 1rem;
-        }
-
-        .about-box p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #333;
-            margin-bottom: 1.5rem;
-        }
-
-        .about-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .about-highlight {
-            background: #00cd91;
-            color: #000029;
-            padding: 1.5rem 2rem;
-            border: 6px solid #000029;
-            box-shadow: 6px 6px 0 #000029;
-            margin-top: 2rem;
-            font-weight: 900;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-align: center;
-        }
-
-        /* ========== CONTACT ========== */
-        #contact {
-            position: relative;
-            overflow: hidden;
-        }
-
-        #contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(
-                -45deg,
-                #00cd91,
-                #00cd91 10px,
-                #00b880 10px,
-                #00b880 20px
-            );
-            z-index: 0;
-        }
-
-        .contact-inner {
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-inner .section-header h2 {
-            background: #FFFFFF;
-            color: #000029;
-            box-shadow: 8px 8px 0 #000029;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .contact-info {
-            background: #000029;
-            border: 6px solid #000029;
-            box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.3);
-            padding: 2.5rem;
-            color: #FFFFFF;
-        }
-
-        .contact-info h3 {
-            color: #00cd91;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .contact-item-icon {
-            font-size: 1.5rem;
-            min-width: 40px;
-            text-align: center;
-        }
-
-        .contact-item a {
-            color: #FFFFFF;
-            transition: color 0.2s;
-        }
-
-        .contact-item a:hover {
-            color: #00cd91;
-        }
-
-        .contact-form {
-            background: #FFFFFF;
-            border: 6px solid #000029;
-            box-shadow: 10px 10px 0 #000029;
-            padding: 2.5rem;
-        }
-
-        .contact-form h3 {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 0.4rem;
-            color: #000029;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 1rem;
-            border: 4px solid #000029;
-            background: #f0f0f0;
-            color: #000029;
-            transition: all 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #00cd91;
-            box-shadow: 4px 4px 0 #00cd91;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .contact-form .btn {
-            width: 100%;
-            text-align: center;
-            border: 6px solid #000029;
-        }
-
-        /* ========== FOOTER ========== */
-        footer {
-            background: #000029;
-            color: #FFFFFF;
-            text-align: center;
-            padding: 3rem 2rem;
-            border-top: 6px solid #00cd91;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: #888;
-            margin-bottom: 0.5rem;
-        }
-
-        footer .tagline {
-            color: #00cd91;
-            font-weight: 900;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-
-        /* ========== MOBILE ========== */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: #000029;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2rem;
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                font-size: 1.2rem;
-                letter-spacing: 3px;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .hero {
-                padding-top: 100px;
-                min-height: auto;
-                padding-bottom: 4rem;
-            }
-
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .steps {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .proof-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .about-box {
-                padding: 2rem 1.5rem;
-            }
-
-            section {
-                padding: 4rem 0;
-            }
-
-            .section-header {
-                margin-bottom: 2.5rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                letter-spacing: 2px;
-            }
-
-            .btn {
-                padding: 0.8rem 1.5rem;
-                font-size: 0.85rem;
-            }
-
-            .nav-logo span {
-                font-size: 1rem;
-                letter-spacing: 2px;
-            }
-
-            .nav-logo img {
-                height: 40px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- ========== NAV ========== -->
-    <nav>
-        <div class="nav-inner">
-            <a href="#" class="nav-logo">
-                <img src="logo.png" alt="Giant Micro Logo">
-            </a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#services" onclick="closeMenu()">Services</a></li>
-                <li><a href="#how-it-works" onclick="closeMenu()">How It Works</a></li>
-                <li><a href="#proof" onclick="closeMenu()">Results</a></li>
-                <li><a href="#about" onclick="closeMenu()">About</a></li>
-                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
+---
+layout: default
+---
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+    <div class="hero-content">
+        <img src="logo.png" alt="Giant Micro" class="hero-logo">
+        <h1>Helping Small Businesses Compete Like Giants</h1>
+        <p>AI-powered agents that run your business operations — so you can focus on what matters.</p>
+        <a href="#services" class="btn btn-primary">See What's Possible</a>
+    </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section id="services">
+    <div class="container">
+        <div class="section-header">
+            <h2>What We Do</h2>
+            <p>AI agents that handle real business operations. Not chatbots. Not demos. Real work.</p>
+        </div>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon">🤖</div>
+                <h3>AI Agent Deployment</h3>
+                <p>Your business gets its own AI agent. It handles email, scheduling, social media, customer communication, and data management. Always on, always learning, always working.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📊</div>
+                <h3>Business Intelligence</h3>
+                <p>Your agent monitors your business data, spots trends, and surfaces insights. Know what's selling, when to order, and where to focus — without staring at spreadsheets.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚙️</div>
+                <h3>Custom Solutions</h3>
+                <p>Every business is different. We build custom integrations tailored to your specific workflows, tools, and needs. If it can be automated, we can automate it.</p>
             </div>
         </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- ========== HERO ========== -->
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <img src="logo.png" alt="Giant Micro" class="hero-logo">
-            <h1>Helping Small Businesses Compete Like Giants</h1>
-            <p>AI-powered agents that run your business operations — so you can focus on what matters.</p>
-            <a href="#services" class="btn btn-primary">See What's Possible</a>
+<!-- ========== HOW IT WORKS ========== -->
+<section id="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2>How It Works</h2>
         </div>
-    </section>
-
-    <!-- ========== SERVICES ========== -->
-    <section id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>What We Do</h2>
-                <p>AI agents that handle real business operations. Not chatbots. Not demos. Real work.</p>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>We Learn Your Business</h3>
+                <p>Discovery session to understand your operations, workflows, and pain points. We figure out where AI can make the biggest impact.</p>
             </div>
-            <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">🤖</div>
-                    <h3>AI Agent Deployment</h3>
-                    <p>Your business gets its own AI agent. It handles email, scheduling, social media, customer communication, and data management. Always on, always learning, always working.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>Business Intelligence</h3>
-                    <p>Your agent monitors your business data, spots trends, and surfaces insights. Know what's selling, when to order, and where to focus — without staring at spreadsheets.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">⚙️</div>
-                    <h3>Custom Solutions</h3>
-                    <p>Every business is different. We build custom integrations tailored to your specific workflows, tools, and needs. If it can be automated, we can automate it.</p>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>We Deploy Your Agent</h3>
+                <p>Built on open-source infrastructure, configured for your specific needs. Your agent is up and running — usually in under a week.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Your Agent Grows With You</h3>
+                <p>Continuous improvement as it learns your business. Your agent gets smarter, faster, and more capable over time.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ========== PROOF POINT ========== -->
+<section id="proof">
+    <div class="container">
+        <div class="proof-content">
+            <h2>From Cottage Bakery to AI-Powered Business</h2>
+            <div class="proof-card">
+                <p>Blue Earth Cooperative Bakery deployed an AI agent in under a week. The agent manages Google Workspace — email, calendar, and business data — all on open-source infrastructure. No monthly platform fees. No vendor lock-in. Just a small business with a powerful new team member.</p>
+            </div>
+            <p class="proof-tagline">Real business. Real results. No hype.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about">
+    <div class="container">
+        <div class="section-header">
+            <h2>About Giant Micro</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-box">
+                <h3>Founded in Blue Earth, MN</h3>
+                <p>Home of the Green Giant. We thought the name fit.</p>
+                <p>We believe every small business deserves the tools that used to be reserved for enterprises. The technology is finally here. The cost is finally right. The only thing missing is someone to build it for you.</p>
+                <p>Giant Micro combines 20+ years of IT expertise with cutting-edge AI to make small businesses compete like giants. We're not a big agency. We're a small team that builds powerful things.</p>
+                <div class="about-highlight">
+                    Making little things act big — that's not a tagline. It's the whole point.
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ========== HOW IT WORKS ========== -->
-    <section id="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>How It Works</h2>
-            </div>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>We Learn Your Business</h3>
-                    <p>Discovery session to understand your operations, workflows, and pain points. We figure out where AI can make the biggest impact.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>We Deploy Your Agent</h3>
-                    <p>Built on open-source infrastructure, configured for your specific needs. Your agent is up and running — usually in under a week.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Your Agent Grows With You</h3>
-                    <p>Continuous improvement as it learns your business. Your agent gets smarter, faster, and more capable over time.</p>
-                </div>
-            </div>
+<!-- ========== CONTACT ========== -->
+<section id="contact">
+    <div class="contact-inner container">
+        <div class="section-header">
+            <h2>Get In Touch</h2>
         </div>
-    </section>
-
-    <!-- ========== PROOF POINT ========== -->
-    <section id="proof">
-        <div class="container">
-            <div class="proof-content">
-                <h2>From Cottage Bakery to AI-Powered Business</h2>
-                <div class="proof-card">
-                    <p>Blue Earth Cooperative Bakery deployed an AI agent in under a week. The agent manages Google Workspace — email, calendar, and business data — all on open-source infrastructure. No monthly platform fees. No vendor lock-in. Just a small business with a powerful new team member.</p>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Let's Talk</h3>
+                <div class="contact-item">
+                    <span class="contact-item-icon">✉️</span>
+                    <a href="mailto:hello@giant-micro.com">hello@giant-micro.com</a>
                 </div>
-                <p class="proof-tagline">Real business. Real results. No hype.</p>
+                <div class="contact-item">
+                    <span class="contact-item-icon">🌐</span>
+                    <a href="https://giant-micro.com">giant-micro.com</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-item-icon">📍</span>
+                    <span>Blue Earth, Minnesota</span>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ========== ABOUT ========== -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Giant Micro</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-box">
-                    <h3>Founded in Blue Earth, MN</h3>
-                    <p>Home of the Green Giant. We thought the name fit.</p>
-                    <p>We believe every small business deserves the tools that used to be reserved for enterprises. The technology is finally here. The cost is finally right. The only thing missing is someone to build it for you.</p>
-                    <p>Giant Micro combines 20+ years of IT expertise with cutting-edge AI to make small businesses compete like giants. We're not a big agency. We're a small team that builds powerful things.</p>
-                    <div class="about-highlight">
-                        Making little things act big — that's not a tagline. It's the whole point.
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form action="https://formspree.io/f/mdkznzjy" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="business">Business Name</label>
+                        <input type="text" id="business" name="business">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Let's Talk</button>
+                </form>
             </div>
         </div>
-    </section>
-
-    <!-- ========== CONTACT ========== -->
-    <section id="contact">
-        <div class="contact-inner container">
-            <div class="section-header">
-                <h2>Get In Touch</h2>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h3>Let's Talk</h3>
-                    <div class="contact-item">
-                        <span class="contact-item-icon">📞</span>
-                        <a href="tel:5075190003">507-519-0003</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-item-icon">✉️</span>
-                        <a href="mailto:hello@giant-micro.com">hello@giant-micro.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-item-icon">🌐</span>
-                        <a href="https://giant-micro.com">giant-micro.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-item-icon">📍</span>
-                        <span>Blue Earth, Minnesota</span>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3>Send Us a Message</h3>
-                    <form action="https://formspree.io/f/mdkznzjy" method="POST">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="business">Business Name</label>
-                            <input type="text" id="business" name="business">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Let's Talk</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== FOOTER ========== -->
-    <footer>
-        <p>&copy; 2026 Giant Micro. Blue Earth, Minnesota.</p>
-        <p class="tagline">Making little things act big.</p>
-    </footer>
-
-    <!-- ========== JS ========== -->
-    <script>
-        function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-            document.getElementById('hamburger').classList.toggle('active');
-        }
-
-        function closeMenu() {
-            document.getElementById('navLinks').classList.remove('active');
-            document.getElementById('hamburger').classList.remove('active');
-        }
-
-        // Close menu on escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeMenu();
-        });
-
-        // Navbar shadow on scroll
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 50) {
-                nav.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
-            } else {
-                nav.style.boxShadow = 'none';
-            }
-        });
-    </script>
-
-</body>
-</html>
+    </div>
+</section>
