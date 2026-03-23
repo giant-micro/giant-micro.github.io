@@ -11,6 +11,6 @@ We believe every small business deserves the tools that used to be reserved for 
 
 That's what we do. We integrate AI into your business operations (email, scheduling, data management, customer communication) so you can focus on what matters.
 
-Our first deployment: a cottage bakery that now has its own AI agent managing Google Workspace. Deployed over a weekend on open-source infrastructure.
+Our first deployment: a small business that now has its own AI agent managing Google Workspace. Deployed over a weekend on open-source infrastructure.
 
 We're just getting started. If you're a small business looking to compete like a giant, we'd love to talk.
