@@ -932,6 +932,12 @@
         }
 
         /* ========== ROADMAP ========== */
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
         .roadmap-item {
             display: flex;
             gap: 1.5rem;
@@ -940,7 +946,6 @@
             border: 6px solid #000029;
             box-shadow: 8px 8px 0 #000029;
             padding: 2rem;
-            margin-bottom: 2rem;
             transition: all 0.2s ease;
         }
 
@@ -1027,6 +1032,10 @@
             }
 
             .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-grid {
                 grid-template-columns: 1fr;
             }
 
