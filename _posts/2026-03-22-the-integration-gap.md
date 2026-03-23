@@ -11,7 +11,7 @@ The tools have never been better. Open-source models run on consumer hardware. F
 
 And yet almost nobody is actually using it.
 
-Not because the technology doesn't work. It does. We deployed an AI agent for a local bakery in under a week. It manages their Google Workspace (email, calendar, business data) on open-source infrastructure with zero monthly platform fees. The agent runs 24/7, handles routine operations, and gets smarter over time.
+Not because the technology doesn't work. It does. We deployed an AI agent for a bakery over a weekend. It manages their Google Workspace (email, calendar, business data) on open-source infrastructure. The agent runs 24/7, handles routine operations, and gets smarter over time.
 
 The technology wasn't the hard part. The hard part was knowing which configuration file to edit.
 
@@ -43,4 +43,4 @@ The AI revolution isn't waiting for better models. It's waiting for someone to p
 
 ---
 
-*Giant Micro is an AI integration company based in Blue Earth, Minnesota. We help small businesses compete like giants. [Get in touch](/index.html#contact).*
+*Giant Micro is an AI integration company. We help small businesses compete like giants. [Get in touch](/index.html#contact).*
