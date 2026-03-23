@@ -43,4 +43,4 @@ The AI revolution isn't waiting for better models. It's waiting for someone to p
 
 ---
 
-*Giant Micro is an AI integration company. We help small businesses compete like giants. [Get in touch](/index.html#contact).*
+*Giant Micro is an AI integration company. We help small businesses compete like giants. [Join the waitlist](/pricing).*

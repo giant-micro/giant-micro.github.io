@@ -61,4 +61,4 @@ The map is necessary. But the compass is what makes the journey coherent.
 
 ---
 
-*Giant Micro helps small businesses deploy AI agents that actually work. We're building the tools and practices that make AI useful over time, not just in the moment. [Get in touch](/index.html#contact).*
+*Giant Micro helps small businesses deploy AI agents that actually work. We're building the tools and practices that make AI useful over time, not just in the moment. [Join the waitlist](/pricing).*

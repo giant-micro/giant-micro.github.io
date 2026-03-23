@@ -45,4 +45,4 @@ That's what we do.
 
 ---
 
-*Giant Micro helps small businesses compete like giants. [Get in touch](https://giant-micro.com/#contact) if you're tired of AI that almost works.*
+*Giant Micro helps small businesses compete like giants. [Join the waitlist](/pricing) if you're tired of AI that almost works.*
