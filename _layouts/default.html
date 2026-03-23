@@ -931,6 +931,98 @@
             color: #000029;
         }
 
+        /* ========== FLOATING CONTACT ========== */
+        .floating-contact-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #00cd91;
+            color: #000029;
+            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            font-size: 0.85rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 1rem 1.5rem;
+            border: 4px solid #000029;
+            box-shadow: 6px 6px 0 #000029;
+            cursor: pointer;
+            z-index: 900;
+            transition: all 0.2s ease;
+        }
+
+        .floating-contact-btn:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0 #000029;
+        }
+
+        .floating-contact-form {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 360px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #FFFFFF;
+            border: 4px solid #000029;
+            box-shadow: 10px 10px 0 #000029;
+            padding: 1.5rem;
+            z-index: 901;
+            display: none;
+        }
+
+        .floating-contact-form.active {
+            display: block;
+        }
+
+        .floating-form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .floating-form-header h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .floating-form-close {
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #000029;
+            font-weight: 900;
+            padding: 0.25rem 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .floating-form-close:hover {
+            color: #00cd91;
+        }
+
+        .floating-contact-form .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .floating-contact-form textarea {
+            height: 80px;
+        }
+
+        @media (max-width: 480px) {
+            .floating-contact-form {
+                width: calc(100vw - 2rem);
+                right: 1rem;
+                bottom: 1rem;
+            }
+
+            .floating-contact-btn {
+                right: 1rem;
+                bottom: 1rem;
+                padding: 0.8rem 1rem;
+                font-size: 0.75rem;
+            }
+        }
+
         /* ========== TIMELINE ========== */
         .timeline-phase {
             margin-bottom: 1.5rem;
@@ -1238,6 +1330,32 @@
 
     {% include footer.html %}
 
+    <!-- ========== FLOATING CONTACT ========== -->
+    <div class="floating-contact-btn" id="floatingBtn" onclick="toggleContactForm()">
+        ✉️ Let's Talk
+    </div>
+    <div class="floating-contact-form" id="floatingForm">
+        <div class="floating-form-header">
+            <h3>Get In Touch</h3>
+            <span class="floating-form-close" onclick="toggleContactForm()">✕</span>
+        </div>
+        <form action="https://formspree.io/f/mdkznzjy" method="POST">
+            <div class="form-group">
+                <label for="fc-name">Name</label>
+                <input type="text" id="fc-name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="fc-email">Email</label>
+                <input type="email" id="fc-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="fc-message">What's taking up too much of your time?</label>
+                <textarea id="fc-message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; text-align: center;">Send</button>
+        </form>
+    </div>
+
     <!-- ========== JS ========== -->
     <script>
         function toggleMenu() {
@@ -1250,9 +1368,25 @@
             document.getElementById('hamburger').classList.remove('active');
         }
 
-        // Close menu on escape key
+        // Floating contact form
+        function toggleContactForm() {
+            var form = document.getElementById('floatingForm');
+            var btn = document.getElementById('floatingBtn');
+            form.classList.toggle('active');
+            btn.style.display = form.classList.contains('active') ? 'none' : 'block';
+        }
+
+        // Close menu and contact form on escape key
         document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeMenu();
+            if (e.key === 'Escape') {
+                closeMenu();
+                var form = document.getElementById('floatingForm');
+                var btn = document.getElementById('floatingBtn');
+                if (form.classList.contains('active')) {
+                    form.classList.remove('active');
+                    btn.style.display = 'block';
+                }
+            }
         });
 
         // Navbar shadow on scroll
