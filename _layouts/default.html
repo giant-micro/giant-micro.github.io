@@ -931,6 +931,143 @@
             color: #000029;
         }
 
+        /* ========== TIMELINE ========== */
+        .timeline-phase {
+            margin-bottom: 1.5rem;
+        }
+
+        .timeline-phase-label {
+            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            font-size: 0.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #00cd91;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #00cd91;
+            display: inline-block;
+        }
+
+        .timeline-week {
+            margin-bottom: 0.5rem;
+            border: 4px solid #000029;
+            background: #FFFFFF;
+        }
+
+        .timeline-summary {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            font-size: 0.95rem;
+            list-style: none;
+            transition: background 0.15s;
+        }
+
+        .timeline-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .timeline-summary:hover {
+            background: #f8f8f8;
+        }
+
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            border: 3px solid #000029;
+        }
+
+        .timeline-dot.done {
+            background: #00cd91;
+        }
+
+        .timeline-dot.upcoming {
+            background: #f0ad4e;
+        }
+
+        .timeline-dot.future {
+            background: #ddd;
+        }
+
+        .timeline-week-label {
+            flex-grow: 1;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .timeline-tag {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.25rem 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-tag.shipped {
+            background: #00cd91;
+            color: #000029;
+        }
+
+        .timeline-tag.upcoming-tag {
+            background: #f0ad4e;
+            color: #000029;
+        }
+
+        .timeline-content {
+            padding: 0 1.5rem 1.5rem;
+            border-top: 2px solid #f0f0f0;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .timeline-content li {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #333;
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00cd91;
+            font-weight: 900;
+        }
+
+        .timeline-content li strong {
+            color: #000029;
+        }
+
+        .timeline-week-placeholder {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            border: 4px dashed #ddd;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-week-placeholder .timeline-week-label {
+            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            font-style: italic;
+        }
+
         /* ========== ROADMAP ========== */
         .roadmap-grid {
             display: grid;
