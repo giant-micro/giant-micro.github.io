@@ -2,7 +2,7 @@
 layout: post
 title: "From Paper to Production in 24 Hours"
 date: 2026-03-24
-excerpt: "A research paper dropped on Monday. By Tuesday morning, we'd studied the technique, adapted it for our stack, shipped it, tested it, threw out our first version, and shipped a better one. Here's how."
+excerpt: "A research paper dropped one evening. By the next morning, we'd studied the technique, adapted it for our stack, shipped it, tested it, threw out our first version, and shipped a better one. Here's how."
 ---
 
 While researching memory architectures for AI agents, we found a paper called Kumiho. Published days earlier by a researcher building graph-native cognitive memory systems. Heavy infrastructure: Neo4j, Redis, formal belief revision semantics. The kind of thing a university lab builds over months.
