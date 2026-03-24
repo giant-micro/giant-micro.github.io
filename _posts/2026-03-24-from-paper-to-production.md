@@ -13,7 +13,7 @@ One technique in the paper caught our attention: **prospective indexing**.
 
 Vector search is how AI agents find old memories. You ask a question, the system finds notes with similar meaning. It works well when your question uses similar words to what was originally written.
 
-But people don't always search the way they write. "Who's our first potential customer?" has zero word overlap with a note that says "Morgan co-manages the farmer's market with Heather." That note is exactly the answer, but vector search will never find it.
+But people don't always search the way they write. "Who's our first potential customer?" has zero word overlap with a note that says "She co-manages the farmer's market with the owner's wife." That note is exactly the answer, but vector search will never find it.
 
 Kumiho's solution: when you store a memory, also generate hypothetical future search phrases. Index those alongside the original content. When someone later searches with different vocabulary, the pre-generated phrases bridge the gap.
 
