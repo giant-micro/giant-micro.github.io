@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Your Website Should Be as Easy to Update as Sending a Text"
-date: 2026-03-25
+date: 2026-03-24
 excerpt: "Most small businesses treat their website like a chore. What if updating it was as simple as telling someone what you want?"
 ---
 
