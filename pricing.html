@@ -12,12 +12,12 @@ title: Pricing
 <!-- ========== PRICING TIERS ========== -->
 <section style="padding: 5rem 0;">
     <div class="container">
-        <div class="cards-grid" style="max-width: 900px; margin: 0 auto;">
+        <div class="cards-grid" style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
 
             <!-- STARTER -->
             <div class="card" style="border-top: 12px solid #00cd91; text-align: center;">
                 <h3 style="margin-bottom: 0.5rem;">Starter</h3>
-                <p style="font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem;">For solo operators<br>and small teams</p>
+                <p style="font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem;">For solo operators</p>
                 <div style="margin-bottom: 0.5rem;">
                     <span style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 3rem; color: #000029;">$149</span>
                     <span style="font-family: Arial, Helvetica, sans-serif; color: #888;">/mo</span>
@@ -47,6 +47,25 @@ title: Pricing
                 <div style="background: #f0f0f0; border: 3px solid #000029; padding: 0.8rem 1rem; margin-bottom: 2rem;">
                     <p style="font-family: Arial, Helvetica, sans-serif; font-size: 0.9rem; color: #333; line-height: 1.6;">
                         <strong>Onboarding: $999</strong><br>
+                        <span style="color: #00cd91; font-weight: 700;">Free with 12-month commitment</span>
+                    </p>
+                </div>
+                <a href="#waitlist" class="btn btn-primary" style="width: 100%; text-align: center;" onclick="openWaitlist()">Join Waitlist</a>
+            </div>
+
+            <!-- ENTERPRISE -->
+            <div class="card" style="border-top: 12px solid #00cd91; text-align: center;">
+                <h3 style="margin-bottom: 0.5rem;">Enterprise</h3>
+                <p style="font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1.5rem;">For heavy usage</p>
+                <div style="margin-bottom: 0.5rem;">
+                    <span style="font-family: 'Arial Black', Gadget, sans-serif; font-size: 3rem; color: #000029;">$499</span>
+                    <span style="font-family: Arial, Helvetica, sans-serif; color: #888;">/mo</span>
+                </div>
+                <p style="font-size: 0.95rem; color: #333; margin-bottom: 0.5rem;">Includes first user</p>
+                <p style="font-size: 0.95rem; color: #00cd91; font-weight: 700; margin-bottom: 1.5rem;">+ $49/mo per additional user</p>
+                <div style="background: #f0f0f0; border: 3px solid #000029; padding: 0.8rem 1rem; margin-bottom: 2rem;">
+                    <p style="font-family: Arial, Helvetica, sans-serif; font-size: 0.9rem; color: #333; line-height: 1.6;">
+                        <strong>Onboarding: $1,499</strong><br>
                         <span style="color: #00cd91; font-weight: 700;">Free with 12-month commitment</span>
                     </p>
                 </div>
@@ -132,27 +151,28 @@ title: Pricing
             <table class="compare-table">
                 <thead>
                     <tr>
-                        <th class="feat-col">Feature</th>
-                        <th class="plan-col">Starter</th>
-                        <th class="plan-col">Pro</th>
+                        <th class="feat-col" style="width: 40%;">Feature</th>
+                        <th class="plan-col" style="width: 20%;">Starter</th>
+                        <th class="plan-col" style="width: 20%;">Pro</th>
+                        <th class="plan-col" style="width: 20%;">Enterprise</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="row"><td>Dedicated cloud VPS server</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
-                    <tr class="row alt"><td>Always-on AI agent in Slack</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
-                    <tr class="row"><td>MicroClaw advanced memory</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
-                    <tr class="row alt"><td>Email management</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
-                    <tr class="row"><td>Website management</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
-                    <tr class="row alt"><td>Web hosting</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
-                    <tr class="row"><td>Unlimited web research</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
-                    <tr class="row alt"><td>Scheduled briefings and tasks</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
-                    <tr class="row"><td>Ongoing management by our team</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
-                    <tr class="section-divider"><td colspan="3">Pro Advantages</td></tr>
-                    <tr class="row"><td>AI processing power</td><td class="plan-val std-val">Standard</td><td class="plan-val pro-val">5x</td></tr>
-                    <tr class="row alt"><td>AI usage capacity</td><td class="plan-val std-val">Generous</td><td class="plan-val pro-val">Virtually unlimited</td></tr>
-                    <tr class="row"><td>Slack message history</td><td class="plan-val std-val">90 days</td><td class="plan-val pro-val">Unlimited</td></tr>
-                    <tr class="row alt"><td>Priority performance</td><td class="plan-val na">—</td><td class="plan-val check">✅</td></tr>
-                    <tr><td>Dedicated account manager</td><td class="plan-val na">—</td><td class="plan-val check">✅</td></tr>
+                    <tr class="row"><td>Dedicated cloud VPS server</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr class="row alt"><td>Always-on AI agent in Slack</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr class="row"><td>MicroClaw advanced memory</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr class="row alt"><td>Email management</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr class="row"><td>Website management</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr class="row alt"><td>Web hosting</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr class="row"><td>Unlimited web research</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr class="row alt"><td>Scheduled briefings and tasks</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr class="row"><td>Ongoing management by our team</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr class="section-divider"><td colspan="4">Capacity</td></tr>
+                    <tr class="row"><td>AI processing power</td><td class="plan-val std-val">Standard</td><td class="plan-val pro-val">5x</td><td class="plan-val pro-val">20x</td></tr>
+                    <tr class="row alt"><td>AI usage capacity</td><td class="plan-val std-val">Generous</td><td class="plan-val pro-val">Heavy</td><td class="plan-val pro-val">Unlimited</td></tr>
+                    <tr class="row"><td>Slack message history</td><td class="plan-val std-val">90 days</td><td class="plan-val pro-val">Unlimited</td><td class="plan-val pro-val">Unlimited</td></tr>
+                    <tr class="row alt"><td>Priority performance</td><td class="plan-val na">—</td><td class="plan-val check">✅</td><td class="plan-val check">✅</td></tr>
+                    <tr><td>Dedicated account manager</td><td class="plan-val na">—</td><td class="plan-val na">—</td><td class="plan-val check">✅</td></tr>
                 </tbody>
             </table>
         </div>
@@ -192,9 +212,29 @@ title: Pricing
                 <div class="compare-card-row"><span class="label">Unlimited web research</span><span class="value">✅</span></div>
                 <div class="compare-card-row alt"><span class="label">Scheduled briefings and tasks</span><span class="value">✅</span></div>
                 <div class="compare-card-row"><span class="label">Ongoing management by our team</span><span class="value">✅</span></div>
-                <div class="compare-card-section">Pro Advantages</div>
+                <div class="compare-card-section">Capacity</div>
                 <div class="compare-card-row"><span class="label">AI processing power</span><span class="value pro-val">5x</span></div>
-                <div class="compare-card-row alt"><span class="label">AI usage capacity</span><span class="value pro-val">Virtually unlimited</span></div>
+                <div class="compare-card-row alt"><span class="label">AI usage capacity</span><span class="value pro-val">Heavy</span></div>
+                <div class="compare-card-row"><span class="label">Slack message history</span><span class="value pro-val">Unlimited</span></div>
+                <div class="compare-card-row alt"><span class="label">Priority performance</span><span class="value">✅</span></div>
+                <div class="compare-card-row"><span class="label">Dedicated account manager</span><span class="value" style="color:#ccc;">—</span></div>
+            </div>
+
+            <!-- Enterprise card -->
+            <div class="compare-card">
+                <div class="compare-card-header">Enterprise — Included</div>
+                <div class="compare-card-row"><span class="label">Dedicated cloud VPS server</span><span class="value">✅</span></div>
+                <div class="compare-card-row alt"><span class="label">Always-on AI agent in Slack</span><span class="value">✅</span></div>
+                <div class="compare-card-row"><span class="label">MicroClaw advanced memory</span><span class="value">✅</span></div>
+                <div class="compare-card-row alt"><span class="label">Email management</span><span class="value">✅</span></div>
+                <div class="compare-card-row"><span class="label">Website management</span><span class="value">✅</span></div>
+                <div class="compare-card-row alt"><span class="label">Web hosting</span><span class="value">✅</span></div>
+                <div class="compare-card-row"><span class="label">Unlimited web research</span><span class="value">✅</span></div>
+                <div class="compare-card-row alt"><span class="label">Scheduled briefings and tasks</span><span class="value">✅</span></div>
+                <div class="compare-card-row"><span class="label">Ongoing management by our team</span><span class="value">✅</span></div>
+                <div class="compare-card-section">Capacity</div>
+                <div class="compare-card-row"><span class="label">AI processing power</span><span class="value pro-val">20x</span></div>
+                <div class="compare-card-row alt"><span class="label">AI usage capacity</span><span class="value pro-val">Unlimited</span></div>
                 <div class="compare-card-row"><span class="label">Slack message history</span><span class="value pro-val">Unlimited</span></div>
                 <div class="compare-card-row alt"><span class="label">Priority performance</span><span class="value">✅</span></div>
                 <div class="compare-card-row"><span class="label">Dedicated account manager</span><span class="value">✅</span></div>
