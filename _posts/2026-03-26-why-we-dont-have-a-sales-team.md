@@ -15,7 +15,7 @@ Small business owners don't trust marketing. They've been burned too many times 
 
 But they trust each other. They trust what they can see with their own eyes. When the food business down the street suddenly has a professional website that updates every week, when their social media looks like they hired a marketing team, when they're somehow keeping up with email and scheduling without an office manager, people notice. And they ask questions.
 
-Nobody had to convince our first customer that AI agents are the future of small business. She watched someone she trusts get real results, in real time, for about an hour. By the time she reached out, the sale was already made. We just had to say yes.
+Nobody had to convince our first customer that AI agents are the future of small business. She watched someone she trusts get real results, in real time, for about an hour. By the time she reached out, the decision was already made.
 
 ## Why Traditional Sales Doesn't Work for What We Do
 
