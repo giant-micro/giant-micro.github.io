@@ -2,10 +2,10 @@
 layout: post
 title: "Why We Don't Have a Sales Team (And Never Will)"
 date: 2026-03-26
-excerpt: "Our first customer didn't come from a pitch deck, a cold call, or a landing page. She watched someone else use the product and said 'I want that.'"
+excerpt: "Our first customer didn't come from a pitch deck, a cold call, or a landing page. She watched someone else use the product for an hour and signed up."
 ---
 
-Our first customer didn't come from a pitch deck. There was no cold call, no demo request, no drip campaign that finally wore her down. She runs an auto repair shop. Her friend runs a food business. The food business owner has an AI agent that handles her website, her email, her scheduling, her social media. The auto repair shop owner saw this in action for about an hour. That's all it took. "I want that. Take my money."
+Our first customer didn't come from a pitch deck. There was no cold call, no demo request, no drip campaign that finally wore her down. She runs an auto repair shop. Her friend runs a food business. The food business owner has an AI agent that handles her website, her email, her scheduling, her social media. The auto repair shop owner saw this in action for about an hour. That's all it took. "I want that."
 
 That's the entire sales process. Proximity.
 
