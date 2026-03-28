@@ -23,13 +23,9 @@ That didn't come from the install script. It came from onboarding.
 
 Most agent providers stop at configuration. Connect your email, set your preferences, choose a personality. That's not onboarding. That's a settings page.
 
-Real onboarding looks like this:
+Real onboarding means the agent learns who it's helping. Not just a name and a role, but how they think, what frustrates them, what they care about. A bakery owner doesn't need a generic assistant. She needs someone who knows that Thursday is bread day, that the sourdough starter is named Margaret, and that the farmer's market booth needs to be set up by 7 AM.
 
-**Week one:** The agent learns who it's helping. Not just a name and a role, but how they think, what frustrates them, what they care about. A bakery owner doesn't need a generic assistant. She needs someone who knows that Thursday is bread day, that the sourdough starter is named Margaret, and that the farmer's market booth needs to be set up by 7 AM.
-
-**Week two:** The agent starts building judgment. It stops asking questions it already knows the answer to. It learns when to act and when to check. It figures out the difference between urgent and important in the specific context of this business.
-
-**Week three and beyond:** The agent becomes a partner. It anticipates. It suggests. It handles the things that used to fall through the cracks. Not because it was programmed to, but because it learned to.
+Over time, the agent builds judgment. It stops asking questions it already knows the answer to. It learns when to act and when to check. It figures out the difference between urgent and important in the specific context of this business. Eventually, it anticipates. It suggests. It handles the things that used to fall through the cracks. Not because it was programmed to, but because it learned to.
 
 None of this happens if you treat deployment as the finish line.
 
