@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Why We Don't Have a Sales Team (And Never Will)"
-date: 2026-03-26
+date: 2026-03-25
 excerpt: "Our first customer didn't come from a pitch deck, a cold call, or a landing page. She watched someone else use the product for an hour and signed up."
 ---
 

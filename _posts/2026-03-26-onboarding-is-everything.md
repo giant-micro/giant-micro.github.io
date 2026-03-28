@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Why Nobody's Talking About the Most Important Part of AI Agents"
-date: 2026-03-27
+date: 2026-03-26
 excerpt: "Every AI agent platform sells the same pitch: deploy in minutes, connect your tools, watch the magic happen. They're solving the wrong problem."
 ---
 
