@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /blog/
+Disallow: /microclaw
+Disallow: /roadmap
+Disallow: /values
 
 Sitemap: https://giant-micro.com/sitemap.xml

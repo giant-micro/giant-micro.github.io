@@ -6,6 +6,12 @@
     <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }} | Helping Small Businesses Compete Like Giants{% endif %}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
     <link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
+    {% unless page.url == "/" %}
+    <meta http-equiv="refresh" content="0; url={{ '/' | relative_url }}">
+    <script>
+        window.location.replace('{{ '/' | relative_url }}');
+    </script>
+    {% endunless %}
 
     <!-- Open Graph -->
     <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
@@ -1376,13 +1382,25 @@
     <!-- ========== JS ========== -->
     <script>
         function toggleMenu() {
-            document.getElementById('navLinks').classList.toggle('active');
-            document.getElementById('hamburger').classList.toggle('active');
+            var navLinks = document.getElementById('navLinks');
+            var hamburger = document.getElementById('hamburger');
+            if (navLinks) {
+                navLinks.classList.toggle('active');
+            }
+            if (hamburger) {
+                hamburger.classList.toggle('active');
+            }
         }
 
         function closeMenu() {
-            document.getElementById('navLinks').classList.remove('active');
-            document.getElementById('hamburger').classList.remove('active');
+            var navLinks = document.getElementById('navLinks');
+            var hamburger = document.getElementById('hamburger');
+            if (navLinks) {
+                navLinks.classList.remove('active');
+            }
+            if (hamburger) {
+                hamburger.classList.remove('active');
+            }
         }
 
         // Floating contact form
