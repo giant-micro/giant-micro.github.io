@@ -8,6 +8,11 @@
     <link rel="canonical" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
     {% unless page.url == "/" %}
     <meta http-equiv="refresh" content="0; url={{ '/' | relative_url }}">
+    <style>
+        body {
+            display: none;
+        }
+    </style>
     <script>
         window.location.replace('{{ '/' | relative_url }}');
     </script>
