@@ -1,23 +1,280 @@
----
-layout: default
-title: Under Construction
-excerpt: Giant Micro is rebuilding its website while the work continues in the background.
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Giant Micro public website. Firm content (pipeline 05). Self-contained, brand from _config/design-system.md, voice from _config/voice.md. -->
+<title>Giant Micro: Compete like a giant</title>
+<meta name="description" content="Giant Micro helps southern Minnesota small businesses use AI to do more with the team they already have. Local, in plain language, no hype.">
+<link rel="canonical" href="https://giant-micro.com/">
+<meta property="og:title" content="Giant Micro: Compete like a giant">
+<meta property="og:description" content="AI help for southern Minnesota small businesses, in plain English. Local and in person.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://giant-micro.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FDFBF7; --ink:#211A33; --ink-dim:#5F5E5A; --purple:#4C2A85; --orange:#FF6B2B;
+  --green:#2F9C7C; --yellow:#FFC72C; --purple-soft:#F1ECF8; --hairline:#E7E0D6; --white:#FFFFFF;
+  --font-head:"Fraunces",Georgia,serif; --font-body:"Source Serif 4",Georgia,serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6}
+a{color:var(--purple);text-decoration:none}
+.wrap{max-width:64rem;margin:0 auto;padding:0 1.4rem}
+h1,h2,h3{font-family:var(--font-head);font-weight:600;line-height:1.12;letter-spacing:-.01em}
 
-<!-- ========== PLACEHOLDER HERO ========== -->
-<section class="hero" id="hero">
-    <div class="hero-content">
-        <img src="logocrab.png" alt="Giant Micro" class="hero-logo">
-        <h1>Giant Micro Is Under Construction</h1>
-        <p>We are rebuilding the site to better match the work we do now: practical AI workflows, AI workspaces, and brand systems for small businesses.</p>
-        <a href="mailto:hello@giant-micro.com?subject=Giant%20Micro%20Inquiry" class="btn btn-primary">Get in Touch</a>
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(253,251,247,.92);backdrop-filter:saturate(120%) blur(6px);border-bottom:1px solid var(--hairline)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:1rem}
+.brand{font-family:var(--font-head);font-weight:700;font-size:1.35rem;color:var(--ink);letter-spacing:-.02em}
+.brand .o{color:var(--orange)}
+.navlinks{display:flex;gap:1.4rem;align-items:center;font-size:.95rem}
+.navlinks a{color:var(--ink-dim)}
+.navlinks a:hover{color:var(--purple)}
+.btn{display:inline-block;background:var(--orange);color:#fff;font-family:var(--font-head);font-weight:600;font-size:.95rem;padding:.6rem 1.1rem;border-radius:.5rem;border:0;cursor:pointer}
+.btn:hover{background:#e85a1e;color:#fff}
+.btn.ghost{background:transparent;color:var(--purple);border:2px solid var(--purple)}
+.btn.ghost:hover{background:var(--purple-soft);color:var(--purple)}
+.btn.big{font-size:1.05rem;padding:.8rem 1.5rem}
+@media(max-width:720px){.navlinks a:not(.btn){display:none}}
+
+/* hero */
+.hero{padding:5rem 0 4rem;background:linear-gradient(180deg,var(--purple-soft),var(--paper))}
+.kick{display:inline-block;font-family:var(--font-head);font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple);margin-bottom:1rem}
+.hero h1{font-size:clamp(2.6rem,7vw,4.4rem);color:var(--ink)}
+.hero .lead{font-size:clamp(1.1rem,2.2vw,1.4rem);color:var(--ink-dim);max-width:34ch;margin:1.3rem 0 2rem}
+.hero .ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero .note{margin-top:1.4rem;font-size:.95rem;color:var(--ink-dim)}
+
+/* sections */
+section{padding:4rem 0}
+.sec-head{max-width:42ch;margin-bottom:2rem}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+.sec-head p{color:var(--ink-dim);margin-top:.7rem;font-size:1.1rem}
+.alt{background:var(--white);border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+
+/* cards */
+.grid{display:grid;gap:1.1rem}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:760px){.g3,.g2{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--hairline);border-radius:.7rem;padding:1.4rem 1.5rem}
+.alt .card{background:var(--paper)}
+.card h3{font-size:1.25rem;margin-bottom:.4rem}
+.card.lead-card{border:2px solid var(--orange)}
+.num{font-family:var(--font-head);font-weight:700;color:var(--orange);font-size:1.1rem}
+.chip{display:inline-block;background:var(--purple-soft);color:var(--purple);border-radius:2rem;padding:.4rem .9rem;font-size:.95rem;font-weight:600;margin:.25rem .25rem 0 0}
+
+/* steps */
+.steps{counter-reset:s;display:grid;gap:1.1rem;grid-template-columns:repeat(4,1fr)}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+.step{position:relative;background:var(--paper);border:1px solid var(--hairline);border-radius:.7rem;padding:1.3rem 1.3rem 1.3rem}
+.step::before{counter-increment:s;content:counter(s);display:flex;align-items:center;justify-content:center;width:2rem;height:2rem;border-radius:50%;background:var(--purple);color:#fff;font-family:var(--font-head);font-weight:700;margin-bottom:.7rem}
+.step h3{font-size:1.1rem}
+.step p{font-size:.98rem;color:var(--ink-dim);margin-top:.3rem}
+
+/* pricing */
+.price{display:flex;align-items:baseline;gap:.5rem;margin:.3rem 0 .6rem}
+.price .amt{font-family:var(--font-head);font-weight:700;color:var(--orange);font-size:2rem}
+.price .per{color:var(--ink-dim);font-size:.95rem}
+.muted{color:var(--ink-dim);font-size:.97rem}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:start}
+@media(max-width:760px){.about{grid-template-columns:1fr}}
+.portrait{background:var(--purple);color:#fff;border-radius:.8rem;padding:1.8rem;font-family:var(--font-head)}
+.portrait .big{font-size:2.4rem;font-weight:700;line-height:1.05}
+.portrait .sm{color:var(--yellow);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.8rem}
+
+/* contact */
+.contact{background:var(--purple);color:#fff}
+.contact h2{color:#fff}
+.contact .lead{color:rgba(255,255,255,.82)}
+.formwrap{background:var(--white);color:var(--ink);border-radius:.8rem;padding:1.6rem;margin-top:1.4rem}
+.field{margin-bottom:.9rem}
+.field label{display:block;font-weight:600;font-size:.9rem;margin-bottom:.3rem}
+.field input,.field textarea{width:100%;font-family:var(--font-body);font-size:1rem;padding:.6rem .7rem;border:1px solid var(--hairline);border-radius:.45rem;background:var(--paper);color:var(--ink)}
+.field textarea{min-height:5.5rem;resize:vertical}
+.formnote{font-size:.85rem;color:var(--ink-dim);margin-top:.6rem}
+.reach{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.6rem;font-size:1.05rem}
+.reach a{color:#fff;font-weight:600}
+.reach .lbl{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:.2rem}
+
+/* footer */
+footer{background:var(--ink);color:rgba(255,255,255,.8);padding:2.4rem 0;font-size:.95rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:center}
+footer .brand{color:#fff}
+footer .tag{color:var(--yellow);font-family:var(--font-head)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <span class="brand">Giant<span class="o">.</span>Micro</span>
+    <nav class="navlinks">
+      <a href="#what">What we do</a>
+      <a href="#who">Who it's for</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="btn">Book a Snapshot</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kick">AI help for small business, in plain English</span>
+    <h1>Compete like a giant.</h1>
+    <p class="lead">Giant Micro helps southern Minnesota small businesses use AI to do more with the team they already have.</p>
+    <div class="ctas">
+      <a href="#contact" class="btn big">Start with a Readiness Snapshot</a>
+      <a href="#how" class="btn ghost big">See how it works</a>
     </div>
+    <p class="note">Local and in person, serving Blue Earth and the surrounding towns.</p>
+  </div>
 </section>
 
-<!-- ========== STATUS ========== -->
-<section style="background: #000029; color: #FFFFFF; text-align: center; padding: 4rem 0;">
-    <div class="container">
-        <h2 style="color: #00B0FF; display: block; background: none; border: none; box-shadow: none; padding: 0; margin-bottom: 1.5rem;">The Work Continues</h2>
-        <p style="font-family: Arial, Helvetica, sans-serif; font-size: 1.15rem; color: #ccc; max-width: 720px; margin: 0 auto; line-height: 1.8;">The old site is parked for a minute while we build the next one. If you need Giant Micro before then, email us and we will get back to you.</p>
+<section id="what">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>We find where AI actually helps, build it, and prove it worked.</h2>
+      <p>No hype, no science projects. Just practical tools that give you and your team time back.</p>
     </div>
+    <div class="grid g3">
+      <div class="card"><h3>Find where it helps</h3><p class="muted">We look at how your business really runs and pick the few places AI would genuinely save time or win work. We will also tell you where it is not worth it.</p></div>
+      <div class="card"><h3>Build it</h3><p class="muted">We set up the tools inside your own accounts, keep them simple, and make sure someone on your team can run them after we leave.</p></div>
+      <div class="card"><h3>Prove it</h3><p class="muted">We measure the result against what we promised, honestly, so you know it was worth doing.</p></div>
+    </div>
+  </div>
 </section>
+
+<section id="who" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Built for the businesses that keep this region running.</h2>
+      <p>If you are a small business owner in southern Minnesota juggling more than one person should, this is for you.</p>
+    </div>
+    <div>
+      <span class="chip">Manufacturers &amp; job shops</span>
+      <span class="chip">Ag co-ops, elevators &amp; processors</span>
+      <span class="chip">Accounting &amp; professional services</span>
+      <span class="chip">Insurance agencies</span>
+      <span class="chip">Construction &amp; trades</span>
+      <span class="chip">Main-street businesses</span>
+    </div>
+    <p class="muted" style="margin-top:1.4rem">A few of the things we help with: quote jobs faster, stop typing the same order into three systems, never miss a customer call, tame an overflowing inbox, get your products and prices organized in one place, and know your real costs.</p>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>How it works</h2>
+      <p>Start small and low-risk. Each step earns the next one.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Readiness Snapshot</h3><p>A half-day visit. We learn your operation and leave you with the top few opportunities, in plain language.</p></div>
+      <div class="step"><h3>A simple roadmap</h3><p>If it makes sense to go further, we lay out what to do, in what order, and what it would take.</p></div>
+      <div class="step"><h3>We build it</h3><p>We set up the tools in your accounts, keep your data yours, and train whoever will run it.</p></div>
+      <div class="step"><h3>We prove and support it</h3><p>We measure the result, and stick around to keep it working if you want us to.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Honest, simple pricing.</h2>
+      <p>You will always know what something costs before we start. No surprises.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card lead-card">
+        <span class="num">Start here</span>
+        <h3>Readiness Snapshot</h3>
+        <div class="price"><span class="amt">$1,500</span><span class="per">flat, half-day</span></div>
+        <p class="muted">An on-site look plus a short memo with your best few AI opportunities. If you go on to a roadmap within 60 days, half of this credits toward it.</p>
+      </div>
+      <div class="card">
+        <h3>Going further</h3>
+        <div class="price"><span class="amt">From $2,500</span><span class="per">scoped to you</span></div>
+        <p class="muted">Strategy roadmaps, and automation builds from about $2,500, priced to your situation before any work begins.</p>
+        <p class="muted" style="margin-top:.6rem"><strong>Ongoing support</strong> from $750 a month, so what we build keeps working. Support clients get a discount on project work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+      <div class="portrait">
+        <div class="sm">Founder</div>
+        <div class="big">Jeff Chunn</div>
+        <p style="font-family:var(--font-body);margin-top:1rem;color:rgba(255,255,255,.85);font-size:1rem">20 years running IT for businesses. 5 years working hands-on with AI.</p>
+      </div>
+      <div>
+        <h2 style="font-size:1.8rem;margin-bottom:.8rem">Big-firm capability, neighbor-level accountability.</h2>
+        <p class="muted">I have spent two decades keeping real businesses running, the kind where the owner wears six hats and there is no IT department down the hall. I know how small-business technology actually breaks, and I have spent the last five years learning where AI genuinely earns its keep and where it is just noise.</p>
+        <p class="muted" style="margin-top:1rem">Giant Micro is built on a simple promise: I will tell you the truth, I will keep it in plain English, your data stays yours, and you will own and understand whatever we build together. If something is not worth doing, I will say so. That is the whole idea.</p>
+      </div>
+    </div>
+    <div style="margin-top:2.8rem">
+      <h2 style="font-size:1.8rem;margin-bottom:.5rem">What we stand for</h2>
+      <p class="muted" style="max-width:48ch;margin-bottom:1.6rem">A handful of values run everything we do. They are not slogans on a wall, they are how we decide.</p>
+      <div class="grid g3">
+        <div class="card"><h3>Honesty over hype</h3><p class="muted">We would rather lose a deal than oversell what AI can do. If a tool is not worth it, you will hear that from us first.</p></div>
+        <div class="card"><h3>Always getting better</h3><p class="muted">We are always sharpening our own tools and methods. When you work with us, you come along on that journey, and your business keeps improving as we do.</p></div>
+        <div class="card"><h3>You own what we build</h3><p class="muted">Everything we hand over is plain, organized, and human-readable. No black boxes. You can open it, understand it, and change it.</p></div>
+        <div class="card"><h3>Your data stays yours</h3><p class="muted">We work inside your own accounts. We advise and build; we never hold or sell your data.</p></div>
+        <div class="card"><h3>We are customer zero</h3><p class="muted">We run Giant Micro on the very tools and methods we sell you. If we would not use it ourselves, we will not sell it to you.</p></div>
+        <div class="card"><h3>Lean by design</h3><p class="muted">We build only what earns its keep, sized to what your team can actually run after we leave. No bloat, no busywork.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Let's find your first win.</h2>
+      <p class="lead">Tell me a little about your business and what is eating up your time. I will get back to you to set up a Snapshot or just to talk it through.</p>
+    </div>
+    <div class="formwrap">
+      <form onsubmit="return false">
+        <div class="grid g2">
+          <div class="field"><label for="name">Your name</label><input id="name" type="text" placeholder="First and last"></div>
+          <div class="field"><label for="biz">Business</label><input id="biz" type="text" placeholder="Your company"></div>
+        </div>
+        <div class="grid g2">
+          <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="you@yourbusiness.com"></div>
+          <div class="field"><label for="town">Town</label><input id="town" type="text" placeholder="Where you are"></div>
+        </div>
+        <div class="field"><label for="msg">What eats up your time?</label><textarea id="msg" placeholder="The thing you and your team do over and over..."></textarea></div>
+        <a href="mailto:info@giant-micro.com?subject=Giant%20Micro%20inquiry" class="btn big">Send it my way</a>
+        <p class="formnote">The button opens an email to info@giant-micro.com with your message.</p>
+      </form>
+    </div>
+    <div class="reach">
+      <div><span class="lbl">Email</span><a href="mailto:info@giant-micro.com">info@giant-micro.com</a></div>
+      <div><span class="lbl">Phone</span><a href="tel:+15075190003" style="color:#fff">507-519-0003</a></div>
+      <div><span class="lbl">Where</span><span style="color:#fff">Blue Earth, MN and the surrounding area</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="brand" style="font-family:var(--font-head);font-weight:700;font-size:1.2rem">Giant<span style="color:var(--orange)">.</span>Micro</span>
+    <span class="tag">Compete like a giant.</span>
+    <span>Blue Earth, Minnesota &middot; <a href="mailto:info@giant-micro.com" style="color:#fff">info@giant-micro.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
